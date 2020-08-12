@@ -16,10 +16,9 @@ class userGuest
      */
     public function handle($request, Closure $next)
     {
-        $user = Auth::user();
-        if($user->role === 'admin') {
-            return abort(403);
+        if( Auth::Check() == false || Auth::User()->role == "user" ) {
+            return $next($request);
         }
-        return $next($request);
+        return abort(403);
     }
 }

@@ -6,7 +6,7 @@
         <div>
             <h1 class="text-2xl md:text-4xl mb-4 font-semibold">{{$event->event_name}}</h1>
             <h2 class="text-orange-600 font-semibold mb-4"><i class="far fa-calendar-alt mr-4"></i>{{$event->date_time}}</h2>
-            <h2 class="text-orange-600 font-semibold mb-4"><i class="fas fa-clock mr-4"></i>{{$event->date_time}}</h2>
+            <!-- <h2 class="text-orange-600 font-semibold mb-4"><i class="fas fa-clock mr-4"></i>{{$event->date_time}}</h2> -->
             <h2 class="text-orange-600 font-semibold"><i class="fas fa-map-marked-alt mr-4"></i>{{$event->location}}</h2>
 
         </div>
@@ -22,7 +22,7 @@
         <form action="/events/book/{{$event->id}}" method="POST">
             @csrf
             @method('post')
-            <button type="submit" class="p-2 text-red-500">Booking Event</button>
+            <button type="submit" class="p-2 h-16 w-40 bg-green-500 text-white m-10">Booking Event</button>
         </form>
     </div>
 </div>

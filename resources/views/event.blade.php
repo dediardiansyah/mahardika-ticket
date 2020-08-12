@@ -7,9 +7,12 @@
     <div class=" px-12 pt-12 bg-cover bg-center bg-no-repeat"style="background-image:url({{asset('images/head1.png')}}); height:424px;">
         <h1 class="text-center font-bold text-4xl mb-10 md:mb-24">Best Seller</h1>
         <div class="flex justify-between best-seller">
-            <div><img src="{{asset('images/Rectangle 2item.png')}}"  class="w-full" alt="" srcset=""></div>
-            <div><img src="{{asset('images/Rectangle 2item.png')}}"  class="w-full" alt="" srcset=""></div>
-            <div><img src="{{asset('images/Rectangle 2item.png')}}"  class="w-full" alt="" srcset=""></div>
+        @php $count = 0;  @endphp
+        @foreach($events as $event)
+            @php if($count == 3) break; @endphp
+            <div><a href="/events/show/{{$event->id}}"><img src="{{ asset('images/'.$event->image.'') }}"  class="w-full" alt="" srcset=""></a></div>
+            @php $count++ @endphp
+        @endforeach
         </div>
     </div>
     @if($message = Session::get('success'))
@@ -21,8 +24,8 @@
             <div class="w-full md:w-1/3 bg-center bg-cover h-48" style="background-image:url('{{ asset('images/'.$event->image.'') }}')"></div>
             <div class="flex-1 p-5">
                 <h1 class="mb-5 text-2xl md:text-3xl font-semibold">{{$event->event_name}}</h1>
-                <h1 class="text-orange-500 font-semibold mb-3">{{$event->date_time}}</h1>
-                <h1 class="text-orange-500 font-semibold">{{$event->date_time}}</h1>
+                <h1 class="text-orange-500 font-semibold mb-3"><i class="far fa-calendar-alt mr-4"></i>{{$event->date_time}}</h1>
+                <!-- <h1 class="text-orange-500 font-semibold"><i class="far fa-clock-alt mr-4">{{$event->date_time}}</h1> -->
             </div>
             <div class="p-5">
                 <h1 class="text-2xl mr-5 font-semibold">Rp. {{$event->price}},~</h1>
